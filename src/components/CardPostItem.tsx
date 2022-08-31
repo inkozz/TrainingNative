@@ -2,7 +2,7 @@ import {StyleSheet, Text, View, TouchableOpacity, Image} from 'react-native';
 import React from 'react';
 import {Card} from 'react-native-paper';
 
-const Button = ({onPress, style, icon}) => (
+const Button = ({onPress, style}) => (
   <TouchableOpacity style={style} onPress={onPress}>
     <Text />
   </TouchableOpacity>
@@ -24,14 +24,10 @@ const CardPostItem = ({title, text, img, onEdit, onDelete}) => {
           <Text style={styles.title}>{title}</Text>
           <Text>{text}</Text>
         </View>
-        {/* <View style={styles.rowView}>
+        <View style={styles.rowView}>
           <Button onPress={onEdit} icon="edit" style={{marginHorizontal: 16}} />
-          <Button
-            onPress={onDelete}
-            icon="trash-2"
-            style={{marginHorizontal: 16}}
-          />
-        </View> */}
+          <Button onPress={onDelete} style={{marginHorizontal: 16}} />
+        </View>
       </View>
     </Card>
   );
