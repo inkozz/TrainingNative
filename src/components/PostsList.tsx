@@ -16,6 +16,7 @@ const PostsList = () => {
   const [posts, setPosts] = useState([]);
   const [visible, setVisible] = useState(false);
   const [title, setTitle] = useState('');
+  const [image, setImage] = useState('');
   const [inputText, setInputText] = useState('');
   const [postId, setPostId] = useState(0);
   const [loading, setLoading] = useState(false);
@@ -35,7 +36,7 @@ const PostsList = () => {
     setLoading(false);
   };
   // A améliorer (à mettre dans un fichier à part)
-  const addPost = (title, text) => {
+  const addPost = (title, text, img) => {
     fetch('http://10.0.2.2:3000/posts', {
       method: 'POST',
       headers: {
@@ -43,6 +44,7 @@ const PostsList = () => {
         Accept: 'application/json',
       },
       body: JSON.stringify({
+        img: img,
         title: title,
         text: text,
       }),
@@ -56,7 +58,12 @@ const PostsList = () => {
         console.log(e);
       });
   };
-  const editPost = (postId: number, title: string, text: string) => {
+  const editPost = (
+    postId: number,
+    title: string,
+    text: string,
+    img: string,
+  ) => {
     fetch(`http://10.0.2.2:3000/posts/${postId}`, {
       method: 'PUT',
       headers: {
@@ -64,6 +71,7 @@ const PostsList = () => {
         Accept: 'application/json',
       },
       body: JSON.stringify({
+        img: img,
         title: title,
         text: text,
       }),
@@ -99,9 +107,10 @@ const PostsList = () => {
     getPosts();
   }, []);
 
-  const editFunction = (id, title, text) => {
+  const editFunction = (id, title, text, img) => {
     setVisible(true);
     setPostId(id);
+    setImage(img);
     setTitle(title);
     setInputText(text);
   };
@@ -111,6 +120,7 @@ const PostsList = () => {
     setVisible(false);
     setTitle('');
     setInputText('');
+    setImage('');
     setPostId(0);
   };
 
@@ -140,7 +150,9 @@ const PostsList = () => {
             img={item.img}
             title={item.title}
             text={item.text}
-            onEdit={() => editFunction(item.id, item.title, item.text)}
+            onEdit={() =>
+              editFunction(item.id, item.title, item.text, item.img)
+            }
             onDelete={() => deletePost(item.id)}
           />
         )}
@@ -150,10 +162,10 @@ const PostsList = () => {
         title="Ajouter un post"
         onDismiss={() => setVisible(false)}
         onSubmit={() => {
-          if (postId && title && inputText) {
-            editPost(postId, title, inputText);
+          if (postId && title && inputText && image) {
+            editPost(postId, title, inputText, image);
           } else {
-            addPost(title, inputText);
+            addPost(title, inputText, image);
           }
         }}
         cancelable>
@@ -167,6 +179,12 @@ const PostsList = () => {
           label="Text"
           value={inputText}
           onChangeText={text => setInputText(text)}
+          mode="outlined"
+        />
+        <TextInput
+          label="Image"
+          value={image}
+          onChangeText={text => setImage(text)}
           mode="outlined"
         />
       </AddPostModal>
