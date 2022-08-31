@@ -4,22 +4,49 @@
       "id": 1,
       "title": "Post 1",
       "text": "post 1 text",
-      "img": "https://picsum.photos/200/200/?image=11"
+      "img": "https://picsum.photos/200/200/?image=3"
     },
     {
-      "title": "Post 2",
-      "text": "Scientists have",
-      "id": 2
+      "id": 3,
+      "title": "Post 3",
+      "text": "post 3 text",
+      "img": "https://picsum.photos/200/200/?image=3"
     },
     {
-      "title": "Salut",
-      "text": "Ca va?",
-      "id": 3
+      "id": 4,
+      "title": "Post 4",
+      "text": "post 4 text",
+      "img": "https://picsum.photos/200/200/?image=4"
     },
     {
-      "title": "Ok",
-      "text": "Salut",
-      "id": 4
+      "id": 5,
+      "title": "Post 5",
+      "text": "post 5 text",
+      "img": "https://picsum.photos/200/200/?image=5"
+    },
+    {
+      "id": 6,
+      "title": "Post 6",
+      "text": "post 6 text",
+      "img": "https://picsum.photos/200/200/?image=6"
+    },
+    {
+      "id": 7,
+      "title": "Post 7",
+      "text": "post 7 text",
+      "img": "https://picsum.photos/200/200/?image=7"
+    },
+    {
+      "id": 8,
+      "title": "Post 8",
+      "text": "post 8 text",
+      "img": "https://picsum.photos/200/200/?image=8"
+    },
+    {
+      "id": 9,
+      "title": "Post 9",
+      "text": "post 9 text",
+      "img": "https://picsum.photos/200/200/?image=9"
     }
   ]
 }
