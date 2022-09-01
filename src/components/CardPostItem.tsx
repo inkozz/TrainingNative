@@ -1,7 +1,6 @@
 import {StyleSheet, Text, View, TouchableOpacity, Image} from 'react-native';
 import React from 'react';
 import {Card} from 'react-native-paper';
-import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 const Button = ({onPress, style, icon, color}) => (
@@ -10,23 +9,12 @@ const Button = ({onPress, style, icon, color}) => (
   </TouchableOpacity>
 );
 
-const CardPostItem = ({title, text, img, onEdit, onDelete}) => {
-  console.log(title, 'title');
-
+const CardPostItem = ({title, text, img, onEdit, onDelete, getDetail}) => {
   return (
     <Card style={styles.item}>
-      <View style={styles.rowView}>
-        <Image
-          style={styles.tinyLogo}
-          source={{
-            uri: `${img}`,
-          }}
-        />
-        <View>
-          <Text style={styles.title}>{title}</Text>
-          <Text>{text}</Text>
-        </View>
-        <View style={styles.rowView}>
+      <View style={styles.headerView}>
+        <Text style={styles.title}>{title}</Text>
+        <View style={styles.rowButton}>
           <Button
             onPress={onEdit}
             icon="create-outline"
@@ -39,29 +27,66 @@ const CardPostItem = ({title, text, img, onEdit, onDelete}) => {
             icon="trash"
             style={{marginHorizontal: 4}}
           />
+          <Button
+            onPress={getDetail}
+            icon="eye-outline"
+            color="#1e3c6b"
+            style={{marginHorizontal: 4}}
+          />
         </View>
+      </View>
+      <View style={styles.rowView}>
+        <Image
+          style={styles.tinyLogo}
+          source={{
+            uri: `${img}`,
+          }}
+        />
+        <Text style={styles.text}>{text}</Text>
       </View>
     </Card>
   );
 };
 export default CardPostItem;
 const styles = StyleSheet.create({
-  rowView: {
+  headerView: {
+    padding: 4,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
   },
+  rowView: {
+    padding: 12,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  rowButton: {
+    flexDirection: 'row',
+  },
   item: {
-    padding: 16,
-    margin: 16,
+    padding: 12,
+    margin: 12,
     elevation: 4,
     borderRadius: 8,
   },
   title: {
     fontSize: 18,
+    fontWeight: '800',
+  },
+  text: {
+    flex: 1,
+    flexWrap: 'wrap',
+    marginLeft: 12,
   },
   tinyLogo: {
     width: 50,
     height: 50,
+    borderRadius: 150 / 2,
+    overflow: 'hidden',
+    borderWidth: 1,
+    borderColor: '#008542',
   },
 });
+
+// Title et les boutons ensemble qui font le Header(space-between). L'image avec le text en row, et wrap sur le text

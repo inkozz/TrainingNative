@@ -1,11 +1,32 @@
-import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import React, {useCallback, useEffect, useState} from 'react';
+import {StyleSheet, Image, Text} from 'react-native';
+import {SafeAreaView} from 'react-native-safe-area-context';
 
-const ViewPostDetails = () => {
+const ViewPostDetails = ({route}) => {
+  const [data, setData] = useState([]);
+  const {itemId} = route.params;
+
+  const getData = useCallback(async () => {
+    const response = await fetch(`http://10.0.2.2:3000/posts/${itemId}`);
+    const result = await response.json();
+    setData(result);
+  }, [itemId]);
+
+  useEffect(() => {
+    getData();
+  }, [getData]);
+
   return (
-    <View style={styles.container}>
-      <Text style={styles.text}>ViewPost</Text>
-    </View>
+    <SafeAreaView style={styles.container}>
+      <Text>{data.title}</Text>
+      <Text>{data.text}</Text>
+      <Image
+        style={styles.tinyLogo}
+        source={{
+          uri: `${data.img}`,
+        }}
+      />
+    </SafeAreaView>
   );
 };
 export default ViewPostDetails;
@@ -15,10 +36,13 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#8df542',
   },
   text: {
     fontSize: 28,
     textAlign: 'center',
+  },
+  tinyLogo: {
+    width: 50,
+    height: 50,
   },
 });

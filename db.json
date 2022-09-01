@@ -4,49 +4,37 @@
       "id": 1,
       "title": "Post 1",
       "text": "post 1 text",
-      "img": "https://picsum.photos/200/200/?image=3"
+      "img": "https://picsum.photos/200/200/?image=11"
+    },
+    {
+      "id": 2,
+      "title": "Post 2",
+      "text": "Scientists have developed catalysts that can convert carbon dioxide – the main cause of global warming – into plastics, fabrics, resins and other products. The discovery, based on the chemistry of artificial photosynthesis, is detailed in the journal Energy & Environmental Science.",
+      "img": "https://picsum.photos/200/200/?image=22"
     },
     {
       "id": 3,
       "title": "Post 3",
-      "text": "post 3 text",
-      "img": "https://picsum.photos/200/200/?image=3"
+      "text": "It is one of the blessings of old friends that you can afford to be stupid with them.",
+      "img": "https://picsum.photos/200/200/?image=33"
     },
     {
       "id": 4,
       "title": "Post 4",
-      "text": "post 4 text",
-      "img": "https://picsum.photos/200/200/?image=4"
+      "text": "Be crazy, be stupid, be silly, be weird. Be whatever, because life is too short to be anything but happy.",
+      "img": "https://picsum.photos/200/200/?image=44"
     },
     {
       "id": 5,
       "title": "Post 5",
-      "text": "post 5 text",
-      "img": "https://picsum.photos/200/200/?image=5"
+      "text": "Lead me not into temptation... Oh who am I kidding, follow me, I know a shortcut.",
+      "img": "https://picsum.photos/200/200/?image=55"
     },
     {
       "id": 6,
       "title": "Post 6",
-      "text": "post 6 text",
-      "img": "https://picsum.photos/200/200/?image=6"
-    },
-    {
-      "id": 7,
-      "title": "Post 7",
-      "text": "post 7 text",
-      "img": "https://picsum.photos/200/200/?image=7"
-    },
-    {
-      "id": 8,
-      "title": "Post 8",
-      "text": "post 8 text",
-      "img": "https://picsum.photos/200/200/?image=8"
-    },
-    {
-      "id": 9,
-      "title": "Post 9",
-      "text": "post 9 text",
-      "img": "https://picsum.photos/200/200/?image=9"
+      "text": "It’s the ship that made the Kessel run in less than twelve parsecs. I’ve outrun Imperial starships. Not the local bulk cruisers, mind you. I’m talking about the big Corellian ships, now. She’s fast enough for you, old man.",
+      "img": "https://picsum.photos/200/200/?image=66"
     }
   ]
 }

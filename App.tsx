@@ -3,7 +3,6 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import PostsList from './src/components/PostsList';
 import ViewPostDetails from './src/components/ViewPostDetails';
-
 import {useColorScheme} from 'react-native';
 
 // import {
@@ -28,7 +27,7 @@ const App = () => {
         <RootStack.Screen name="PostList" component={PostsList} />
         <RootStack.Screen
           options={{headerShown: true}}
-          name="ViewPostDetails"
+          name="Details"
           component={ViewPostDetails}
         />
       </RootStack.Navigator>

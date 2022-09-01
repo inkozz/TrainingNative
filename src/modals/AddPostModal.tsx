@@ -6,7 +6,6 @@ import {Title} from 'react-native-paper';
 const AddPostModal = ({
   children,
   title,
-  image,
   onSubmit,
   cancelable,
   visible = false,

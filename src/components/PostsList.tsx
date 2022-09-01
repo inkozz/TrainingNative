@@ -1,9 +1,9 @@
 /* eslint-disable no-shadow */
 import React, {useEffect, useState} from 'react';
-import {useNavigation} from '@react-navigation/native';
 import {Surface, Title, TextInput} from 'react-native-paper';
 import AddPostModal from '../modals/AddPostModal';
 import CardPostItem from './CardPostItem';
+import {useNavigation} from '@react-navigation/native';
 import {
   StyleSheet,
   FlatList,
@@ -27,7 +27,6 @@ const PostsList = () => {
     await fetch('http://10.0.2.2:3000/posts')
       .then(response => response.json())
       .then(json => {
-        console.log('data', json);
         setPosts(json);
       })
       .catch(e => {
@@ -85,8 +84,20 @@ const PostsList = () => {
         console.log(e);
       });
   };
+  const getOnePost = async (postId: number) => {
+    await fetch(`http://10.0.2.2:3000/posts/${postId}`)
+      .then(response => response.json())
+      .then(json => {
+        navigation.navigate('Details', {
+          itemId: postId,
+        });
+      })
+      .catch(e => {
+        console.log(e);
+      });
+  };
 
-  const deletePost = (postId: any) => {
+  const deletePost = (postId: number) => {
     fetch(`http://10.0.2.2:3000/posts/${postId}`, {
       method: 'DELETE',
       headers: {
@@ -154,13 +165,14 @@ const PostsList = () => {
               editFunction(item.id, item.title, item.text, item.img)
             }
             onDelete={() => deletePost(item.id)}
+            getDetail={() => getOnePost(item.id)}
           />
         )}
       />
       <AddPostModal
         visible={visible}
         title="Ajouter un post"
-        onDismiss={() => setVisible(false)}
+        onDismiss={() => updateView()}
         onSubmit={() => {
           if (postId && title && inputText && image) {
             editPost(postId, title, inputText, image);
@@ -226,27 +238,3 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
 });
-
-// return (
-//   <View style={styles.postContainer}>
-//     <Image
-//       style={styles.tinyLogo}
-//       source={{
-//         uri: `${item.img}`,
-//       }}
-//     />
-//     <Text>{item.title}</Text>
-//     <Text>{item.text}</Text>
-//     <TouchableOpacity
-//       onPress={() => editFunction(item.id, item.title, item.text)}>
-//       <Text>Edit</Text>
-//     </TouchableOpacity>
-//     <TouchableOpacity
-//       key={item.id}
-//       onPress={() => {
-//         deletePost(item.id);
-//       }}>
-//       <AntDesign name="delete" size={24} />
-//     </TouchableOpacity>
-//   </View>
-// );
