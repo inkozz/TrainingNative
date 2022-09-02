@@ -1,23 +1,12 @@
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import PostsList from './src/components/PostsList';
-import ViewPostDetails from './src/components/ViewPostDetails';
-import {useColorScheme} from 'react-native';
-
-// import {
-useColorScheme;
-//   Colors,
-//   DebugInstructions,
-//   Header,
-//   LearnMoreLinks,
-//   ReloadInstructions,
-// } from 'react-native/Libraries/NewAppScreen';
+import PostsList from './src/screens/PostsList';
+import ViewPostDetails from './src/screens/ViewPostDetails';
 
 const RootStack = createNativeStackNavigator();
 
 const App = () => {
-  const isDarkMode = useColorScheme() === 'dark';
   return (
     <NavigationContainer>
       <RootStack.Navigator

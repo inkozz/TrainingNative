@@ -88,5 +88,3 @@ const styles = StyleSheet.create({
     borderColor: '#008542',
   },
 });
-
-// Title et les boutons ensemble qui font le Header(space-between). L'image avec le text en row, et wrap sur le text

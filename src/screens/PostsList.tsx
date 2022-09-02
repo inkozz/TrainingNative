@@ -2,7 +2,7 @@
 import React, {useEffect, useState} from 'react';
 import {Surface, Title, TextInput} from 'react-native-paper';
 import AddPostModal from '../modals/AddPostModal';
-import CardPostItem from './CardPostItem';
+import CardPostItem from '../components/CardPostItem';
 import {useNavigation} from '@react-navigation/native';
 import {
   StyleSheet,
@@ -35,7 +35,7 @@ const PostsList = () => {
     setLoading(false);
   };
   // A améliorer (à mettre dans un fichier à part)
-  const addPost = (title, text, img) => {
+  const addPost = (title: string, text: string, img: string) => {
     fetch('http://10.0.2.2:3000/posts', {
       method: 'POST',
       headers: {
@@ -118,7 +118,12 @@ const PostsList = () => {
     getPosts();
   }, []);
 
-  const editFunction = (id, title, text, img) => {
+  const editFunction = (
+    id: number,
+    title: string,
+    text: string,
+    img: string,
+  ) => {
     setVisible(true);
     setPostId(id);
     setImage(img);
@@ -135,9 +140,6 @@ const PostsList = () => {
     setPostId(0);
   };
 
-  // Ce que je pourrais faire ici ? Passer lors du onPress, la function AddPost et l'utiliser dans le component
-  // Ce que j'ai fait : une modal à la place
-
   return (
     <SafeAreaView style={styles.container}>
       <Surface style={styles.header}>
@@ -153,7 +155,9 @@ const PostsList = () => {
       {/* A améliorer : */}
       <FlatList
         data={posts}
-        keyExtractor={(item, index) => item.id + index.toString()}
+        keyExtractor={(item: number, index: number) =>
+          item.id + index.toString()
+        }
         refreshing={loading}
         onRefresh={getPosts}
         renderItem={({item}) => (
